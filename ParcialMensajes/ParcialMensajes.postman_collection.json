@@ -1,0 +1,430 @@
+{
+	"info": {
+		"_postman_id": "1cc1bf93-7e5d-4d36-8ec0-82690d096994",
+		"name": "ParcialMensajes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1-crearUsuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "bgallo@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "apellido",
+							"value": "Gallo",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Nombre 1",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file"
+						},
+						{
+							"key": "caso",
+							"value": "crearUsuario",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/Codigo/ParcialMensajes2/nexo.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialMensajes2",
+						"nexo.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2-buscarUsuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/Codigo/ParcialMensajes2/nexo.php?caso=buscarUsuario&apellido=gallo",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialMensajes2",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "buscarUsuario"
+						},
+						{
+							"key": "apellido",
+							"value": "gallo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-listarUsuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/Codigo/ParcialMensajes2/nexo.php?caso=listarUsuarios",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialMensajes2",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "listarUsuarios"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4-cargarMensaje",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "caso",
+						"value": "cargarMensaje"
+					},
+					{
+						"key": "codigo",
+						"value": "1A"
+					},
+					{
+						"key": "nombre",
+						"value": "Matematica 1"
+					},
+					{
+						"key": "cupo",
+						"value": "35"
+					},
+					{
+						"key": "aula",
+						"value": "101"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "caso",
+							"value": "cargarMensaje",
+							"type": "text"
+						},
+						{
+							"key": "remitente",
+							"value": "alegallo@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "destinatario",
+							"value": "javifrancia@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "Probando de nuevo",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/Codigo/ParcialMensajes2/nexo.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialMensajes2",
+						"nexo.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-MensajesRecibidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/Codigo/ParcialMensajes2/nexo.php?caso=mensajesRecibidos&email=alegallo@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialMensajes2",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "mensajesRecibidos"
+						},
+						{
+							"key": "email",
+							"value": "alegallo@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6-mensajesEnviados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/Codigo/ParcialMensajes2/nexo.php?caso=mensajesEnviados&email=alegallo@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialMensajes2",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "mensajesEnviados"
+						},
+						{
+							"key": "email",
+							"value": "alegallo@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7-modificarUsuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "caso",
+							"value": "modificarUsuario",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "alegallo@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "apellido",
+							"value": "Gallito",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "coco",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/Codigo/ParcialMensajes2/nexo.php?",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialMensajes2",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "foto",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8-cargarMensaje Con Foto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "caso",
+						"value": "cargarMensaje"
+					},
+					{
+						"key": "codigo",
+						"value": "1A"
+					},
+					{
+						"key": "nombre",
+						"value": "Matematica 1"
+					},
+					{
+						"key": "cupo",
+						"value": "35"
+					},
+					{
+						"key": "aula",
+						"value": "101"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "caso",
+							"value": "cargarMensaje",
+							"type": "text"
+						},
+						{
+							"key": "remitente",
+							"value": "alegallo@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "destinatario",
+							"value": "javifrancia@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "Probando de nuevo",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/Codigo/ParcialMensajes2/nexo.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialMensajes2",
+						"nexo.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9-Mensajes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/Codigo/ParcialMensajes2/nexo.php?caso=mensajes",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialMensajes2",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "mensajes"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/Codigo/ParcialMensajes2/test.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialMensajes2",
+						"test.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

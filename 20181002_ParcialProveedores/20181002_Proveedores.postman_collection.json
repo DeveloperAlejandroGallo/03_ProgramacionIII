@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "427180f2-4ab1-4e6b-b621-081773fdd011",
+		"name": "20181002_Proveedores",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1-cargarProveedor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "sapo",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ale1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file"
+						},
+						{
+							"key": "caso",
+							"value": "cargarProveedor",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/PP-C3C.2018-2C/nexo.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PP-C3C.2018-2C",
+						"nexo.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2-consultarProveedor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/PP-C3C.2018-2C/nexo.php?caso=consultarProveedor&nombre=SAPO",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PP-C3C.2018-2C",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "consultarProveedor"
+						},
+						{
+							"key": "nombre",
+							"value": "SAPO"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-proveedores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/PP-C3C.2018-2C/nexo.php?caso=proveedores",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PP-C3C.2018-2C",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "proveedores"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4-hacerPedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "caso",
+							"value": "hacerPedido",
+							"type": "text"
+						},
+						{
+							"key": "idProveedor",
+							"value": "6111",
+							"type": "text"
+						},
+						{
+							"key": "producto",
+							"value": "Monitor",
+							"type": "text"
+						},
+						{
+							"key": "cantidad",
+							"value": "98",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/PP-C3C.2018-2C/nexo.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PP-C3C.2018-2C",
+						"nexo.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-listarPedidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/PP-C3C.2018-2C/nexo.php?caso=listarPedidos",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PP-C3C.2018-2C",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "listarPedidos"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6-listarPedidosProveedor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/PP-C3C.2018-2C/nexo.php?caso=listarPedidosProveedor&idProveedor=2",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PP-C3C.2018-2C",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "listarPedidosProveedor"
+						},
+						{
+							"key": "idProveedor",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7-modificarProveedor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "jejeje",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "Modificadito@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file"
+						},
+						{
+							"key": "caso",
+							"value": "modificarProveedor",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/PP-C3C.2018-2C/nexo.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PP-C3C.2018-2C",
+						"nexo.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8-fotosBack",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/PP-C3C.2018-2C/nexo.php?caso=fotosBack",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"PP-C3C.2018-2C",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "fotosBack"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

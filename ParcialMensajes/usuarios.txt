@@ -1,0 +1,4 @@
+danigarat@gmail.com;Garat;Dani;fotos/danigarat@gmail.com.jpeg;
+alegallo@gmail.com;Gallitoooooo;Coquitoooo;fotos/alegallo@gmail.com.jpeg;
+bgallo@gmail.com;Gallo;Nombre 1;fotos/bgallo@gmail.com.jpeg;
+cgallo@gmail.com;Gallo;Nombre 2;fotos/cgallo@gmail.com.png;

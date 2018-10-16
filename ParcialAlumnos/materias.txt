@@ -1,0 +1,2 @@
+1ASP;Sistemas de Procesamiento de datos;25;Labo 1;
+1AM1;Matematica 1;33;101;

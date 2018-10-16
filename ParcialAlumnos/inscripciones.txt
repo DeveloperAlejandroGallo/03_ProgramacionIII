@@ -1,0 +1,3 @@
+alegallo@gmail.com;Gallo;Ale;1ASP;Sistema Procesamiento de Datos;
+danigarat@gmail.com;Garat;Dani;1AM1;Matematica 1;
+alegallo@gmail.com;Gallo;Ale;1AM1;Matematica 1;

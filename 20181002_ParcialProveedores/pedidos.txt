@@ -1,0 +1,6 @@
+1;Teclados;20;
+1;Mouse;14;
+2;Mouse;6;
+1;Monitor;6;
+3;Monitor;98;
+6;Monitor;98;

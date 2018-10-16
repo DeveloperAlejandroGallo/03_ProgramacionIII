@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "b6615558-4ad4-4041-8f23-654b325c54b6",
+		"name": "ParcialHelados",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ParcialAlumnos",
+			"item": [
+				{
+					"name": "Ejercicios",
+					"item": [
+						{
+							"name": "Ej01-Productos",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "nombre",
+											"value": "ale",
+											"type": "text"
+										},
+										{
+											"key": "codBarr",
+											"value": "12345",
+											"type": "text"
+										},
+										{
+											"key": "imagen",
+											"value": "",
+											"type": "file"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost/Codigo/Clase04/Ej01-Productos/Index.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"Codigo",
+										"Clase04",
+										"Ej01-Productos",
+										"Index.php"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "cargarAlumno",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "AA@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "apellido",
+									"value": "Arias",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "Ariel",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/Codigo/ParcialAlumnos/cargarAlumno.php",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"Codigo",
+								"ParcialAlumnos",
+								"cargarAlumno.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HeladosCarga",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/Codigo/ParcialHelado/HeladosCarga.php?sabor=fruti&tipo=crema&cantidad=33&precio=62",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialHelado",
+						"HeladosCarga.php"
+					],
+					"query": [
+						{
+							"key": "sabor",
+							"value": "fruti"
+						},
+						{
+							"key": "tipo",
+							"value": "crema"
+						},
+						{
+							"key": "cantidad",
+							"value": "33"
+						},
+						{
+							"key": "precio",
+							"value": "62"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarHelado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "sabor",
+							"value": "Americana",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "crema",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/Codigo/ParcialHelado/ConsultarHelado.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialHelado",
+						"ConsultarHelado.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "6d9d3df6-0e71-448e-a544-c9b4fce85430",
+		"name": "ParcialAlumnos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "2-consultarAlumno",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/Codigo/ParcialAlumnos/nexo.php?caso=consultarAlumno&apellido=Arias",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialAlumnos",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "consultarAlumno"
+						},
+						{
+							"key": "apellido",
+							"value": "Arias"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-cargarAlumno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "danigarat@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "apellido",
+							"value": "Garat",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Dani",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file"
+						},
+						{
+							"key": "caso",
+							"value": "cargarAlumno",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/Codigo/ParcialAlumnos/nexo.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialAlumnos",
+						"nexo.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/Codigo/ParcialAlumnos/test.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialAlumnos",
+						"test.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-cargarMateria",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "caso",
+						"value": "cargarMateria"
+					},
+					{
+						"key": "codigo",
+						"value": "1A"
+					},
+					{
+						"key": "nombre",
+						"value": "Matematica 1"
+					},
+					{
+						"key": "cupo",
+						"value": "35"
+					},
+					{
+						"key": "aula",
+						"value": "101"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "caso",
+							"value": "cargarMateria",
+							"type": "text"
+						},
+						{
+							"key": "codigo",
+							"value": "1AM1",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Matematica 1",
+							"type": "text"
+						},
+						{
+							"key": "cupo",
+							"value": "35",
+							"type": "text"
+						},
+						{
+							"key": "aula",
+							"value": "101",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/Codigo/ParcialAlumnos/nexo.php",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialAlumnos",
+						"nexo.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4-inscribirAlumno",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/Codigo/ParcialAlumnos/nexo.php?email=alegallo@gmail.com&nombre=Ale&apellido=Gallo&codigo=1AM1&materia=Matematica 1&caso=inscribirAlumno",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialAlumnos",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "alegallo@gmail.com"
+						},
+						{
+							"key": "nombre",
+							"value": "Ale"
+						},
+						{
+							"key": "apellido",
+							"value": "Gallo"
+						},
+						{
+							"key": "codigo",
+							"value": "1AM1"
+						},
+						{
+							"key": "materia",
+							"value": "Matematica 1"
+						},
+						{
+							"key": "caso",
+							"value": "inscribirAlumno"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-inscripciones(vacio)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/Codigo/ParcialAlumnos/nexo.php?caso=inscripciones",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialAlumnos",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "inscripciones"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6-1-inscripciones(materia)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/Codigo/ParcialAlumnos/nexo.php?caso=inscripciones&materia=1AM1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialAlumnos",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "inscripciones"
+						},
+						{
+							"key": "materia",
+							"value": "1AM1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6-2-inscripciones(apellido)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/Codigo/ParcialAlumnos/nexo.php?caso=inscripciones&apellido=gallo",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialAlumnos",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "inscripciones"
+						},
+						{
+							"key": "apellido",
+							"value": "gallo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7-modificarAlumno",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "caso",
+							"value": "modificarAlumno",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "alegallo@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "apellido",
+							"value": "Gallito",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "coco",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/Codigo/ParcialAlumnos/nexo.php?",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialAlumnos",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "foto",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8-alumnos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost/Codigo/ParcialAlumnos/nexo.php?caso=alumnos",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Codigo",
+						"ParcialAlumnos",
+						"nexo.php"
+					],
+					"query": [
+						{
+							"key": "caso",
+							"value": "alumnos"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
