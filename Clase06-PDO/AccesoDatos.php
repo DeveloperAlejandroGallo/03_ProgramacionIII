@@ -5,28 +5,31 @@ class AccesoDatos
     private static $ObjetoAccesoDatos;
     private $objetoPDO;
  
-    private function __construct()
+    private function __construct($host,$dbName,$usr,$psw)
     {
         try { 
-            $this->objetoPDO = new PDO('mysql:host=localhost;dbname=utn;charset=utf8', 'root', '', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $this->objetoPDO = new PDO('mysql:host='.$host.';dbname='.$dbName.';charset=utf8', $usr, $psw); //, array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+            $this->objetoPDO->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            $this->objetoPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->objetoPDO->exec("SET CHARACTER SET utf8");
             } 
-        catch (PDOException $e) { 
+        catch (PDOException $e) 
+        { 
             print "Error!: " . $e->getMessage(); 
             die();
         }
     }
  
-    public function RetornarConsulta($sql)
+    public function execQuery($sql)
     { 
         return $this->objetoPDO->prepare($sql); 
     }
-     public function RetornarUltimoIdInsertado()
+     public function getLastId()
     { 
         return $this->objetoPDO->lastInsertId(); 
     }
  
-    public static function dameUnObjetoAcceso()
+    public static function getDataAccess()
     { 
         if (!isset(self::$ObjetoAccesoDatos)) {          
             self::$ObjetoAccesoDatos = new AccesoDatos(); 
@@ -42,7 +45,7 @@ class AccesoDatos
     }
 
 /**TRAER TODOS */
-    public function traerTodos($tabla)
+    public function selectAll($table)
     {
         $consulta = "select * from $tabla";
         $exec = $this->RetornarConsulta($consulta);
@@ -50,10 +53,20 @@ class AccesoDatos
         return $exec->FetchAll();
     }
 
-    public function guardarInsert($obj)
+    public function insertObject($obj)
     {
-        $script  ="insert into ".$obj->table()." values (".$obj->getValues()." )";
-
+        try
+        {
+            $script  ="insert into ".$obj->table()." values (".$obj->getValues()." )";
+            $this->$objetoPDO->exec($script);
+            return $this->$objetoPDO->lastInsertId();
+        }
+        catch (PDOException $ex)
+        {
+            print "Error!: " . $ex->getMessage(); 
+            die();
+        }
+        
     }
 
     
