@@ -29,10 +29,10 @@ class AccesoDatos
         return $this->objetoPDO->lastInsertId(); 
     }
  
-    public static function getDataAccess()
+    public static function getDataAccess($host,$dbName,$usr,$psw)
     { 
         if (!isset(self::$ObjetoAccesoDatos)) {          
-            self::$ObjetoAccesoDatos = new AccesoDatos(); 
+            self::$ObjetoAccesoDatos = new AccesoDatos($host,$dbName,$usr,$psw); 
         } 
         return self::$ObjetoAccesoDatos;        
     }
@@ -45,10 +45,10 @@ class AccesoDatos
     }
 
 /**TRAER TODOS */
-    public function selectAll($table)
+    public function selectAllFrom($table)
     {
-        $consulta = "select * from $tabla";
-        $exec = $this->RetornarConsulta($consulta);
+        $query = "select * from $tabla";
+        $exec = $this->execQuery($query);
         $exec->execute();
         return $exec->FetchAll();
     }

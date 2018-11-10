@@ -6,12 +6,17 @@ include_once "AccesoDatos.php";
 
 echo "Inicio<br>";
 
+$host = "localhost";
+$dbName = "utn";
+$usr = "root";
+$psw = "";
 
-$db = AccesoDatos::dameUnObjetoAcceso();
+
+$db = AccesoDatos::getDataAccess($host,$dbName,$usr,$psw);
 
 $consulta = "select * from cds";
 
-$ejecucion = $db->RetornarConsulta($consulta);
+$ejecucion = $db->execQuery($consulta);
 $ejecucion->execute();
 
 

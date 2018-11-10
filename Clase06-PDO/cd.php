@@ -1,18 +1,20 @@
 <?php
-
+/**
+ * La clase debe llevar la misma estructura que la tabla en MySql
+ */
 class cd 
 {
 
     public $id;
     public $title;
-    public $interpret;
+    public $interpreter;
     public $year;
 
-    function __construct($id, $title, $interpret, $year)
+    function __construct($id, $title, $interpreter, $year)
     {
         $this->id = $id;
         $this->title = $title;
-        $this->interpret = $interpret;
+        $this->interpreter = $interpreter;
         $this->year = $year;
     }
 
