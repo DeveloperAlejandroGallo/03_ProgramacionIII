@@ -33,7 +33,6 @@ class cd
         $db = AccesoDatos::getDataAccess();
         $query = "select * from cds where id = :id";
         $db->bindparam(":id",$id);
-        $db->
 
     }
 
