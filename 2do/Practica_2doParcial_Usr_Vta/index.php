@@ -28,6 +28,7 @@ $app->group('', function()
          $this->get('/usuario', \usuarioApi::class . ':listaDeUsuarios')->add(\MWlistarUsuarios::class . ':listarUsuarios')->setName("usuario");#3
          $this->post('/compra', \compraApi::class . ':altaCompra')->setname("compra");#4#8
          $this->get('/compra', \compraApi::class . ':listarCompras')->setname("compra");#5
+         $this->get('/compra/{marca}', \compraApi::class . ':listarModelosArticulo')->setname("compra/marca");#6
          $this->get('/productos',\compraApi::class . ':productosVendidos')->setName('productos');
       })->add(\MWParaAutentificar::class . ':ValidarUsuario');
 })->add(\MWLogger::class . ':logger');#6

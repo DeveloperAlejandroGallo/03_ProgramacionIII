@@ -92,7 +92,7 @@ class compraApi extends compra
 
     }
 
-    public function listarModelosarticulo($request, $response, $args)
+    public function listarModelosArticulo($request, $response, $args)
     {//post
         
         $obj = new stdClass();
@@ -103,7 +103,7 @@ class compraApi extends compra
         {
             if(isset($args['articulo']))
             {
-                $compras = compra::TraerModelosarticulo($args['articulo']);
+                $compras = compra::TraerModelosArticulo($args['articulo']);
                 $res = $response->withJson($compras, 200);
             }
             else
