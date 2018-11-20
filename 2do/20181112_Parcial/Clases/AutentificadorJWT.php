@@ -18,7 +18,7 @@ class AutentificadorJWT
         */
         $payload = array(
         	'iat'=>$ahora,
-            'exp' => $ahora + (60*20),
+            'exp' => $ahora + (60*120), //(60*20) - 2 min
             'aud' => self::Aud(),
             'data' => $data,
             'app'=> "API REST Practica"

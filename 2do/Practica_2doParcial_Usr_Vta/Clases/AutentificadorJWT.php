@@ -1,14 +1,14 @@
 <?php
-
+require_once './vendor/autoload.php';
 use Firebase\JWT\JWT;
 
 class AutentificadorJWT
 {
-    private static $claveSecreta = 'M1Clav3Sup3rS3cr3t4';
+    private static $claveSecreta = 'ClaveSuperSecreta@';
     private static $tipoEncriptacion = ['HS256'];
     private static $aud = null;
     
-    public static function CrearToken($datos)
+    public static function CrearToken($data)
     {
         $ahora = time();
         /*
@@ -17,41 +17,44 @@ class AutentificadorJWT
          + los que quieras ej="'app'=> "API REST CD 2017" 
         */
         $payload = array(
-        	'iat'=>$ahora, //momento de creacion
-            'exp' => $ahora + (60*60), //Expira en segundos
-            'aud' => self::Aud(), //Entorno en cual se esta utilizando
-            'data' => $datos, 
-            'app'=> "API REST CD 2018"
+        	'iat'=>$ahora,
+            'exp' => $ahora + (60*120), //2hs
+            'aud' => self::Aud(),
+            'data' => $data,
+            'app'=> "API REST Practica"
         );
-     
         return JWT::encode($payload, self::$claveSecreta);
     }
     
     public static function VerificarToken($token)
     {
-       
-        if(empty($token)|| $token=="")
+        if(empty($token) || $token == "")
         {
+            echo "El token esta vacio.";
             throw new Exception("El token esta vacio.");
         } 
         // las siguientes lineas lanzan una excepcion, de no ser correcto o de haberse terminado el tiempo       
-        try 
+        try
         {
             $decodificado = JWT::decode(
             $token,
             self::$claveSecreta,
             self::$tipoEncriptacion
             );
-        } catch (ExpiredException $e) {
-            //var_dump($e);
+        } 
+        catch (ExpiredException $e)
+        {
+            echo "Clave fuera de tiempo";
            throw new Exception("Clave fuera de tiempo");
         }
         
         // si no da error,  verifico los datos de AUD que uso para saber de que lugar viene  
         if($decodificado->aud !== self::Aud())
         {
+            echo "No es el usuario valido";
             throw new Exception("No es el usuario valido");
         }
+        return true;
     }
     
    
@@ -75,16 +78,11 @@ class AutentificadorJWT
     {
         $aud = '';
         
-        if (!empty($_SERVER['HTTP_CLIENT_IP'])) 
-        {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             $aud = $_SERVER['HTTP_CLIENT_IP'];
-        } 
-        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) 
-        {
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $aud = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        } 
-        else 
-        {
+        } else {
             $aud = $_SERVER['REMOTE_ADDR'];
         }
         
