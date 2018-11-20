@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "2e79982d-7cc4-4789-9f29-d95694ce9524",
+		"name": "20181112_Parcial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1-usuarioPOST-crearUsr",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aa@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "perfil",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181112_Parcial/usuario",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181112_Parcial",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2-Login-CreateToken",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "dg@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181112_Parcial/login",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181112_Parcial",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-usuarioGET-listarUsuarios",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI2MDQ0OTAsImV4cCI6MTU0MjYwNTY5MCwiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsiZW1haWwiOiJkZ0BnbWFpbC5jb20iLCJwZXJmaWwiOiJ1c2VyIn0sImFwcCI6IkFQSSBSRVNUIFByYWN0aWNhIn0.C0xlkNvlqgBhbl4G-9ydrs-pq_qOu3b4PJ58rr1p0ys",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181112_Parcial/usuario",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181112_Parcial",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4-compraPOST-crearCpra",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI2MDYyNDMsImV4cCI6MTU0MjYwNzQ0MywiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsiZW1haWwiOiJkZ0BnbWFpbC5jb20iLCJwZXJmaWwiOiJ1c2VyIn0sImFwcCI6IkFQSSBSRVNUIFByYWN0aWNhIn0.v9ukuFASA45HfZ3rhqyqTlBtMUajijS_VnoGd_GohM8",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "foto",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "marca",
+							"value": "apple",
+							"type": "text"
+						},
+						{
+							"key": "modelo",
+							"value": "6s",
+							"type": "text"
+						},
+						{
+							"key": "precio",
+							"value": "40000.00",
+							"type": "text"
+						},
+						{
+							"key": "fecha",
+							"value": "2018-11-20 21:22:23",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181112_Parcial/compra",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181112_Parcial",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-compraGET-listaCpra",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI2MDQ1NTUsImV4cCI6MTU0MjYwNTc1NSwiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsiZW1haWwiOiJhZ0BnbWFpbC5jb20iLCJwZXJmaWwiOiJhZG1pbiJ9LCJhcHAiOiJBUEkgUkVTVCBQcmFjdGljYSJ9.robPTlvhGuv8Z3EaWSScUnIqDznj2-FNPlERDNwGicI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181112_Parcial/compra",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181112_Parcial",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6-compra/marca",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI2MDYyNDMsImV4cCI6MTU0MjYwNzQ0MywiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsiZW1haWwiOiJkZ0BnbWFpbC5jb20iLCJwZXJmaWwiOiJ1c2VyIn0sImFwcCI6IkFQSSBSRVNUIFByYWN0aWNhIn0.v9ukuFASA45HfZ3rhqyqTlBtMUajijS_VnoGd_GohM8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181112_Parcial/compra/nokia",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181112_Parcial",
+						"compra",
+						"nokia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9-productos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI2MDYyNDMsImV4cCI6MTU0MjYwNzQ0MywiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsiZW1haWwiOiJkZ0BnbWFpbC5jb20iLCJwZXJmaWwiOiJ1c2VyIn0sImFwcCI6IkFQSSBSRVNUIFByYWN0aWNhIn0.v9ukuFASA45HfZ3rhqyqTlBtMUajijS_VnoGd_GohM8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181112_Parcial/productos",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181112_Parcial",
+						"productos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

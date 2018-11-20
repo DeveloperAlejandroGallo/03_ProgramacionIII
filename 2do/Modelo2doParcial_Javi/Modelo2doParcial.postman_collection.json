@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "d5c460f8-7f4c-429c-b21a-4a22b7c315a8",
+		"name": "Modelo2doParcial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1) Usuario (POST)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "JWT",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "javierrrr",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "lalala",
+							"type": "text"
+						},
+						{
+							"key": "sexo",
+							"value": "masculino",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:80/MODELOSEGUNDO/index.php/usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"MODELOSEGUNDO",
+						"index.php",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2) Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "javi",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "lalala",
+							"type": "text"
+						},
+						{
+							"key": "sexo",
+							"value": "masculino",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:80/MODELOSEGUNDO/index.php/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"MODELOSEGUNDO",
+						"index.php",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3) Usuario (GET)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "JWT",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:80/MODELOSEGUNDO/index.php/usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"MODELOSEGUNDO",
+						"index.php",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4) Compra (POST)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "JWT",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "articulo",
+							"value": "Pata de rana ACME",
+							"type": "text"
+						},
+						{
+							"key": "fecha",
+							"value": "2018-11-30",
+							"type": "text"
+						},
+						{
+							"key": "precio",
+							"value": "88.30",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:80/MODELOSEGUNDO/index.php/compra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"MODELOSEGUNDO",
+						"index.php",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5) Compra (GET)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "JWT",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:80/MODELOSEGUNDO/index.php/compra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"MODELOSEGUNDO",
+						"index.php",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

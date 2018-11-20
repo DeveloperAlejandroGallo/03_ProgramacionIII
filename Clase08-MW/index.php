@@ -32,7 +32,7 @@ $app->get('[/]', function (Request $request, Response $response) {
 
 })->add(function($request,$response,$next)
     {
-        $token = $request->getHeaders('token');
+        // $token = $request->getHeaders('token');
         $response->getBody()->write("Antes del Next");
         $next($response,$request);
         $response->getBody()->write("Despues del next");

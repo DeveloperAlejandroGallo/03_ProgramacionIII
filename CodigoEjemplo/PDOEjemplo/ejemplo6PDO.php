@@ -64,8 +64,8 @@
               try
               {
 
-                  $db = new PDO('mysql:host=localhost;dbname=cdcol;charset=utf8', 'root', '', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-                $sql = $db->query('SELECT titel as titulo,interpret as cantante, jahr as año  FROM cds ');
+                  $db = new PDO('mysql:host=localhost;dbname=utn;charset=utf8', 'root', '', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                $sql = $db->query('SELECT title as titulo,interpreter as cantante, year as año  FROM cds ');
 
                 $catidadFilas = $sql->rowCount();
                 
@@ -89,7 +89,7 @@
 
                   echo "<h3> fetchObject('cd')</h3></br>";
                   
-                  $sql = $db->query('SELECT titel as titulo,interpret as cantante, jahr as año  FROM cds ');
+                  $sql = $db->query('SELECT title as titulo,interpreter as cantante, year as año  FROM cds ');
                   while( $cd= $sql->fetchObject('cd'))
                   { 
                     print_r($cd->titulo);
