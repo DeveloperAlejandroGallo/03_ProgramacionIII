@@ -1,0 +1,417 @@
+{
+	"info": {
+		"_postman_id": "f281243a-2d20-4a9e-a7f3-1b8a3cde6454",
+		"name": "20181120_PROG3_2P_GALLO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1-usuario_POST_altaUsr",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "mario",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "empleado",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/usuario",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181120_PROG3_2P_GALLO",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2-login_POST_empleado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "mario",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/login",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181120_PROG3_2P_GALLO",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2-login_POST_admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "ag",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/login",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181120_PROG3_2P_GALLO",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-usuario_GET_empleado",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NTI2NDAsImV4cCI6MTU0Mjc1OTg0MCwiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsibm9tYnJlIjoibWFyaW8iLCJ0aXBvIjoiZW1wbGVhZG8ifSwiYXBwIjoiQVBJIFJFU1QgUHJhY3RpY2EifQ.rfu425l9EDZxJXa-Mw1IOnFMFNLsBdrES4Vh1KpkXug",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/usuario",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181120_PROG3_2P_GALLO",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-usuario_GET_admin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NTI3MjMsImV4cCI6MTU0Mjc1OTkyMywiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsibm9tYnJlIjoiYWciLCJ0aXBvIjoiYWRtaW4ifSwiYXBwIjoiQVBJIFJFU1QgUHJhY3RpY2EifQ.VRWjYxWh7ywhMXGjnb7Pj5fELDq3AStewK8-p5MZI6I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/usuario",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181120_PROG3_2P_GALLO",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4-compra_POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NTYzNDksImV4cCI6MTU0Mjc2MzU0OSwiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsibm9tYnJlIjoibWFyaW8iLCJ0aXBvIjoiZW1wbGVhZG8ifSwiYXBwIjoiQVBJIFJFU1QgUHJhY3RpY2EifQ.ki0bvwuBc_ZeVBU_TLVKcgjWU2cthIwu9mKSoPyzPIU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "marca",
+							"value": "kiall",
+							"type": "text"
+						},
+						{
+							"key": "modelo",
+							"value": "m3",
+							"type": "text"
+						},
+						{
+							"key": "fecha",
+							"value": "2018-11-19",
+							"type": "text"
+						},
+						{
+							"key": "kilometros",
+							"value": "100000",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/compra",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181120_PROG3_2P_GALLO",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-compra_GET_empleado",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NTI2NDAsImV4cCI6MTU0Mjc1OTg0MCwiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsibm9tYnJlIjoibWFyaW8iLCJ0aXBvIjoiZW1wbGVhZG8ifSwiYXBwIjoiQVBJIFJFU1QgUHJhY3RpY2EifQ.rfu425l9EDZxJXa-Mw1IOnFMFNLsBdrES4Vh1KpkXug",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/compra",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181120_PROG3_2P_GALLO",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-compra_GET_admin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NTI3MjMsImV4cCI6MTU0Mjc1OTkyMywiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsibm9tYnJlIjoiYWciLCJ0aXBvIjoiYWRtaW4ifSwiYXBwIjoiQVBJIFJFU1QgUHJhY3RpY2EifQ.VRWjYxWh7ywhMXGjnb7Pj5fELDq3AStewK8-p5MZI6I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/compra",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181120_PROG3_2P_GALLO",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6-compra/marca_GET_empleado",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NTI2NDAsImV4cCI6MTU0Mjc1OTg0MCwiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsibm9tYnJlIjoibWFyaW8iLCJ0aXBvIjoiZW1wbGVhZG8ifSwiYXBwIjoiQVBJIFJFU1QgUHJhY3RpY2EifQ.rfu425l9EDZxJXa-Mw1IOnFMFNLsBdrES4Vh1KpkXug",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/compra/audi",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181120_PROG3_2P_GALLO",
+						"compra",
+						"audi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6-compra/marca_GET_admin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NTI3MjMsImV4cCI6MTU0Mjc1OTkyMywiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsibm9tYnJlIjoiYWciLCJ0aXBvIjoiYWRtaW4ifSwiYXBwIjoiQVBJIFJFU1QgUHJhY3RpY2EifQ.VRWjYxWh7ywhMXGjnb7Pj5fELDq3AStewK8-p5MZI6I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/compra/kia",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181120_PROG3_2P_GALLO",
+						"compra",
+						"kia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7-hora_GET",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NTI3MjMsImV4cCI6MTU0Mjc1OTkyMywiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsibm9tYnJlIjoiYWciLCJ0aXBvIjoiYWRtaW4ifSwiYXBwIjoiQVBJIFJFU1QgUHJhY3RpY2EifQ.VRWjYxWh7ywhMXGjnb7Pj5fELDq3AStewK8-p5MZI6I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/hora",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181120_PROG3_2P_GALLO",
+						"hora"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9-productos_GET",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NTI3MjMsImV4cCI6MTU0Mjc1OTkyMywiYXVkIjoiNWZlNmY0ZTY0ZWIyNzI3NzBmN2YyOTZmYmViYTRmZGMxZjI5OTZjMCIsImRhdGEiOnsibm9tYnJlIjoiYWciLCJ0aXBvIjoiYWRtaW4ifSwiYXBwIjoiQVBJIFJFU1QgUHJhY3RpY2EifQ.VRWjYxWh7ywhMXGjnb7Pj5fELDq3AStewK8-p5MZI6I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/productos",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"03_ProgramacionIII",
+						"2do",
+						"20181120_PROG3_2P_GALLO",
+						"productos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
