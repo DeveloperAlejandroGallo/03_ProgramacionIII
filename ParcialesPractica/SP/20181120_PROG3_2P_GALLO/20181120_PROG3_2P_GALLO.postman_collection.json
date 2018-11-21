@@ -31,13 +31,13 @@
 					]
 				},
 				"url": {
-					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/usuario",
+					"raw": "localhost/03_ProgramacionIII/ParcialesPractica/SP/20181120_PROG3_2P_GALLO/usuario",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"03_ProgramacionIII",
-						"2do",
+						"ParcialesPractica","SP",
 						"20181120_PROG3_2P_GALLO",
 						"usuario"
 					]
@@ -66,13 +66,13 @@
 					]
 				},
 				"url": {
-					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/login",
+					"raw": "localhost/03_ProgramacionIII/ParcialesPractica/SP/20181120_PROG3_2P_GALLO/login",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"03_ProgramacionIII",
-						"2do",
+						"ParcialesPractica","SP",
 						"20181120_PROG3_2P_GALLO",
 						"login"
 					]
@@ -101,13 +101,13 @@
 					]
 				},
 				"url": {
-					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/login",
+					"raw": "localhost/03_ProgramacionIII/ParcialesPractica/SP/20181120_PROG3_2P_GALLO/login",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"03_ProgramacionIII",
-						"2do",
+						"ParcialesPractica","SP",
 						"20181120_PROG3_2P_GALLO",
 						"login"
 					]
@@ -131,13 +131,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/usuario",
+					"raw": "localhost/03_ProgramacionIII/ParcialesPractica/SP/20181120_PROG3_2P_GALLO/usuario",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"03_ProgramacionIII",
-						"2do",
+						"ParcialesPractica","SP",
 						"20181120_PROG3_2P_GALLO",
 						"usuario"
 					]
@@ -161,13 +161,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/usuario",
+					"raw": "localhost/03_ProgramacionIII/ParcialesPractica/SP/20181120_PROG3_2P_GALLO/usuario",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"03_ProgramacionIII",
-						"2do",
+						"ParcialesPractica","SP",
 						"20181120_PROG3_2P_GALLO",
 						"usuario"
 					]
@@ -217,13 +217,13 @@
 					]
 				},
 				"url": {
-					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/compra",
+					"raw": "localhost/03_ProgramacionIII/ParcialesPractica/SP/20181120_PROG3_2P_GALLO/compra",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"03_ProgramacionIII",
-						"2do",
+						"ParcialesPractica","SP",
 						"20181120_PROG3_2P_GALLO",
 						"compra"
 					]
@@ -247,13 +247,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/compra",
+					"raw": "localhost/03_ProgramacionIII/ParcialesPractica/SP/20181120_PROG3_2P_GALLO/compra",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"03_ProgramacionIII",
-						"2do",
+						"ParcialesPractica","SP",
 						"20181120_PROG3_2P_GALLO",
 						"compra"
 					]
@@ -277,13 +277,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/compra",
+					"raw": "localhost/03_ProgramacionIII/ParcialesPractica/SP/20181120_PROG3_2P_GALLO/compra",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"03_ProgramacionIII",
-						"2do",
+						"ParcialesPractica","SP",
 						"20181120_PROG3_2P_GALLO",
 						"compra"
 					]
@@ -307,13 +307,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/compra/audi",
+					"raw": "localhost/03_ProgramacionIII/ParcialesPractica/SP/20181120_PROG3_2P_GALLO/compra/audi",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"03_ProgramacionIII",
-						"2do",
+						"ParcialesPractica","SP",
 						"20181120_PROG3_2P_GALLO",
 						"compra",
 						"audi"
@@ -338,13 +338,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/compra/kia",
+					"raw": "localhost/03_ProgramacionIII/ParcialesPractica/SP/20181120_PROG3_2P_GALLO/compra/kia",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"03_ProgramacionIII",
-						"2do",
+						"ParcialesPractica","SP",
 						"20181120_PROG3_2P_GALLO",
 						"compra",
 						"kia"
@@ -369,13 +369,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/hora",
+					"raw": "localhost/03_ProgramacionIII/ParcialesPractica/SP/20181120_PROG3_2P_GALLO/hora",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"03_ProgramacionIII",
-						"2do",
+						"ParcialesPractica","SP",
 						"20181120_PROG3_2P_GALLO",
 						"hora"
 					]
@@ -399,13 +399,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost/03_ProgramacionIII/2do/20181120_PROG3_2P_GALLO/productos",
+					"raw": "localhost/03_ProgramacionIII/ParcialesPractica/SP/20181120_PROG3_2P_GALLO/productos",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"03_ProgramacionIII",
-						"2do",
+						"ParcialesPractica","SP",
 						"20181120_PROG3_2P_GALLO",
 						"productos"
 					]
