@@ -4,7 +4,7 @@ use Firebase\JWT\JWT;
 
 class AutentificadorJWT
 {
-    private static $claveSecreta = 'ClaveSuperSecreta@';
+    private static $claveSecreta = 'M1Clav3Sup3rS3cr3t4@'; //Calve unica para codificación y decodificacion
     private static $tipoEncriptacion = ['HS256'];
     private static $aud = null;
     
@@ -17,11 +17,11 @@ class AutentificadorJWT
          + los que quieras ej="'app'=> "API REST CD 2017" 
         */
         $payload = array(
-        	'iat'=>$ahora,
-            'exp' => $ahora + (60*120), //2hs
-            'aud' => self::Aud(),
-            'data' => $data,
-            'app'=> "API REST Practica"
+        	'iat'=>$ahora,  //hora actual
+            'exp' => $ahora + (60*20), //2 min - Tiempo en el que expira el token
+            'aud' => self::Aud(), //Ambiente en el que se encuentra
+            'data' => $data,  //datos que queremos guardar codificados.
+            'app'=> "API REST Practica" 
         );
         return JWT::encode($payload, self::$claveSecreta);
     }
