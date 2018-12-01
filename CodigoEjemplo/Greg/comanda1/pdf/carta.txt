@@ -1,0 +1,15 @@
+'100','asado',250,'cocineros
+'101','milanesa',80,'cocineros
+'102','revioles',100,'cocineros
+'103','churrasco',120,'cocineros
+'104','hamburguesa',90,'cocineros
+'200','vino',300,'bartender
+'201','gaseosa',100,'bartender
+'202','soda',80,'bartender
+'203','agua',70,'bartender
+'204','aperitivo',150,'bartender
+'300','jarra',200,'cerveceros
+'301','chop',150,'cerveceros
+'302','pinta',120,'cerveceros
+'303','1/2 pinta',80,'cerveceros
+'304','lata',70,'cerveceros

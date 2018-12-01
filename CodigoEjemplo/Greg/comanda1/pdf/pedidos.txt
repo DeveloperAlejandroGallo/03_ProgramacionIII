@@ -1,0 +1,40 @@
+
+http://kq000525.ferozo.com/comanda1/cliente/
+
+
+crear un middleware para que al delete solo pasen los socio o los mozos
+http://localhost:8080/comanda1/pedidos/
+como admin pasar:
+comandaToken
+Get
+(trae todos los pedidos)
+
+como bartender, cocineros o cerveceros
+comandaToken
+
+Get
+(trae los pedidospendientes y en preparacion para cada uno)
+
+Post
+idPedido
+Estimado
+
+put
+idPedido
+(le paso el id para pasarlo a listo para servir y agregar la hora de fin)
+
+
+
+como Mozos ( tomo un pedido nuevo)
+Post
+cliente
+mesa
+idArticulo
+cantidad
+(me retorna el codigo de mesa y de pedido)
+
+Get (trae los pedidos)
+
+Put
+idPedido
+(cambia el estado a entregado)

@@ -1,0 +1,20 @@
+
+http://localhost/comanda1/login/
+
+Get ( Listado de Empleados todos los logeos)
+
+
+Post ( devuelve el token)
+nombre
+pass
+
+
+
+
+http://localhost/comanda1/login/porempleado
+
+post ( Cantidad de operaciones de todos listada por cada empleado)
+
+http://localhost/comanda1/login/porsector
+post
+Cantidad de operaciones de todos por sector

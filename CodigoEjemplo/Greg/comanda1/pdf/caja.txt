@@ -1,0 +1,11 @@
+http://localhost:8080/comanda1/caja/
+
+Post
+mesa
+
+(verifica si la mesa esta lista para facturar y la factura)
+
+
+Get
+
+todas Las ventas

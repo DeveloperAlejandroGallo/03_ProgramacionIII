@@ -1,0 +1,6 @@
+http://localhost:8080/comanda1/mesas/
+
+solo entra admin y mozos
+put
+numero = numero mesa
+cambia al estado clintes esperando con clientes pagando
