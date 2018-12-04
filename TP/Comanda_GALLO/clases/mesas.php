@@ -56,11 +56,12 @@ class mesas
 
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta = $objetoAccesoDato->RetornarConsulta("
-       update mesas 
-       set estado='$this->estado'				
-       WHERE codigo='$this->codigo'");
-        return $consulta->execute();
+        update mesas 
+        set estado='$this->estado'				
+        WHERE codigo='$this->codigo'");
 
+        $consulta->execute();
+        return $consulta->rowCount();
     }
 
     public function TraerId($codigo)
@@ -160,20 +161,26 @@ class mesas
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta = $objetoAccesoDato->RetornarConsulta("
         update mesas 
-        set estado='$estado'				
-        WHERE codigo='$codigo'");
-        return $consulta->execute();
+        set estado= :estado				
+        WHERE codigo=:codigo");
+        $consulta->bindParam(':codigo',$codigo, PDO::PARAM_INT);
+        $consulta->bindParam(':estado',$estado, PDO::PARAM_STR);
+        $consulta->execute();
+        return $consulta->rowCount();
     }
 
-    public function ModificarMesa($codigo, $estado)
+    public function ModificarMesa($id, $estado)
     {
 
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta = $objetoAccesoDato->RetornarConsulta("
         update mesas 
-        set estado='$estado'				
-        WHERE codigo='$codigo'");
-        return $consulta->execute();
+        set estado = :estado			
+        WHERE id = :id");
+        $consulta->bindParam(':id',$id, PDO::PARAM_INT);
+        $consulta->bindParam(':estado',$estado, PDO::PARAM_STR);
+        $consulta->execute();
+        return $consulta->rowCount();
     }
 
 

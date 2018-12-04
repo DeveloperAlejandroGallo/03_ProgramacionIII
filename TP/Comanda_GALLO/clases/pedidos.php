@@ -48,7 +48,7 @@ function existeCodigo($key)
     $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
     $consulta =$objetoAccesoDato->RetornarConsulta("select codigo from pedidos where codigo = '$key'");
     $consulta->execute();
-    $ret = $consulta->fetch(PDO::FETCH_ASSOC);
+    $ret = $consulta->fetch(PDO::FETCH_OBJ);
     if($ret)
         return true;
     else
@@ -154,31 +154,49 @@ public function verificarPedido($mesa){
 }
 
 //--TRAER
-public function obtenerTodos($fecha)
+public function obtenerTodos()
 {
     $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
     $consulta =$objetoAccesoDato->RetornarConsulta(
         "select 
         p.id IdPedido,
-        m.codigo idMesa,
-        c.descripcion idArticulo,
-        e.nombre empleado,
-        p.cliente,
-        p.importe,
-        p.foto,
-        p.estado,
-        p.estimado,
-        p.horaInicio,
-        p.horaFin  
+        m.codigo Mesa,
+        c.descripcion Articulo,
+        e.nombre Empleado,
+        p.cliente Cliente,
+        p.importe Importe,
+        p.cantidad Cantidad,
+        p.foto Foto,
+        p.estado Estado,
+        p.estimado Estimado,
+        p.horaInicio HoraInicio,
+        p.horaFin  HoraFin
         from pedidos p 
         inner join carta c on c.id = p.idArticulo
         inner join mesas m on m.id = p.idMesa
         left join empleados e on e.id = p.idEmpleado ");
     
     $consulta->execute(); 
-    return $consulta->fetchAll();	
+    return $consulta->fetchAll(PDO::FETCH_OBJ);	
 }
 
+public function obtenerFacturadoEntreFechas($fInicio, $fFin)
+{
+    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+    $consulta =$objetoAccesoDato->RetornarConsulta(
+        "select 
+        'Total Facturado' titulo,
+        sum(p.importe * p.cantidad) total
+        from pedidos p 
+        where p.horaFin is not null
+        and p.horaInicio >= :fInicio and p.horaFin <= :fFin ");
+    $consulta->bindParam(':fInicio',$fInicio, PDO::PARAM_STR);
+    $consulta->bindParam(':fFin',$fFin, PDO::PARAM_STR);
+    $consulta->execute(); 
+    $res =$consulta->fetch(PDO::FETCH_OBJ);	
+
+    return $res;
+}
 
 
 //--Consultar segun estado y estado
@@ -206,7 +224,7 @@ public function ConsultarTipo($codigo,$tipo){
     $retorno=null;
 
     $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-    $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM pedidos,carta WHERE pedidos.idArticulo=carta.id AND sector=? AND pedidos.id=?");
+    $consulta =$objetoAccesoDato->RetornarConsulta("");
     $consulta->execute(array($tipo,$id)); 
     $pedido = $consulta->fetchObject('pedidos'); 
     if($pedido != null){
@@ -220,18 +238,24 @@ public function ConsultarTipo($codigo,$tipo){
     return $retorno;
 }
 
-public function ConsultarEstado($id,$estado){
-
-    $retorno=null;
-
+//Si devuelve nro mayor a cero es que no todos los articulos del pedidos se encuentran listos para servir.
+public function ConsultarEstado($codigoPedido, $estado)
+{
+    $ret=false;
     $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-    $consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM pedidos WHERE pedidos.id=? AND pedidos.estado=?");
-    $consulta->execute(array($id,$estado)); 
-    $pedido = $consulta->fetchObject('pedidos'); 
-    if($pedido != null){
-        $retorno= true;
-    }
-    return $retorno;
+    $consulta =$objetoAccesoDato->RetornarConsulta("
+        select count(p.estado) estado
+        from pedidos p
+        where p.codigo = ?
+        and p.estado != ?");
+    $consulta->execute(array($codigoPedido,$estado)); 
+    $estados = $consulta->fetch(PDO::FETCH_OBJ); 
+
+    if($estados != null)
+        if($estados->estado == 0)
+            $ret= true;
+    
+    return $ret;
 }
 
 public function TraerIdMesa($codigo,$estado){
@@ -262,11 +286,6 @@ public function TraerIdMesa($codigo,$estado){
         return $consulta->fetchAll(PDO::FETCH_CLASS, "pedidos");
     } 
 
-    public function pedidosPendientesSector($tipo)
-    {
-
-    }
-
 
    
     ///Traer codigo mesa
@@ -283,58 +302,62 @@ public function TraerIdMesa($codigo,$estado){
     
     
     ///Tomar pedido
-    public function TomarPedido()
+    public function asignarPedido()
     {
+        
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+        $consulta =$objetoAccesoDato->RetornarConsulta("
+            update pedidos 
+            set estado = :estado,
+            estimado = :estimado,
+            idEmpleado = :idEmpleado
+            WHERE codigo = :codigo and idMesa = :idMesa and idArticulo = :idArticulo
+            ");
+        $consulta->bindParam(':estado',$this->estado, PDO::PARAM_STR);
+        $consulta->bindParam(':estimado', $this->estimado, PDO::PARAM_INT);
+        $consulta->bindParam(':idEmpleado', $this->idEmpleado, PDO::PARAM_INT);
+        $consulta->bindParam(':codigo',$this->codigo, PDO::PARAM_STR);
+        $consulta->bindParam(':idMesa', $this->idMesa, PDO::PARAM_INT);
+        $consulta->bindParam(':idArticulo', $this->idArticulo, PDO::PARAM_INT);
 
-       $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-       $consulta =$objetoAccesoDato->RetornarConsulta("
-           update pedidos 
-           set estado=:estado,
-           estimado= :estimado,
-           idEmpleado= :idEmpleado
-           WHERE id=:id");
-       $consulta->bindParam(':id',$this->id, PDO::PARAM_INT);
-       $consulta->bindParam(':estado',$this->estado, PDO::PARAM_INT);
-       $consulta->bindParam(':estimado', $this->estimado, PDO::PARAM_STR);
-       $consulta->bindParam(':idEmpleado', $this->idEmpleado, PDO::PARAM_STR);
-       return $consulta->execute();
+        $consulta->execute();
+        return $consulta->rowCount() ;
 
-
-
+  
     }
 
 
-    public function PedidoTerminado(){
+    public function PedidoTerminado()
+    {
 
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
        $consulta =$objetoAccesoDato->RetornarConsulta("
            update pedidos 
            set estado=:estado,
-           horaFin= :horaFin,
-           idEmpleado= :idEmpleado
+           horaFin= :horaFin
            WHERE id=:id");
        $consulta->bindParam(':id',$this->id, PDO::PARAM_INT);
        $consulta->bindParam(':estado',$this->estado, PDO::PARAM_INT);
        $consulta->bindParam(':horaFin', $this->horaFin, PDO::PARAM_STR);
-       $consulta->bindParam(':idEmpleado', $this->idEmpleado, PDO::PARAM_STR);
-       return $consulta->execute();
-
+       $consulta->execute();
+       return $consulta->rowCount() ;
 
     }
      
-    public function PedidoEntregado(){
-
+    //Rehacer esto. Deberia tener tabla de 1 pedido -> n Articulos para mantenere el estado del pedido unico.
+    //Por ahora upd de todos por codigo.
+    public function PedidoEntregado()
+    {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
        $consulta =$objetoAccesoDato->RetornarConsulta("
            update pedidos 
-           set estado=:estado,
-           idEmpleado= :idEmpleado
-           WHERE id=:id");
-       $consulta->bindParam(':id',$this->id, PDO::PARAM_INT);
-       $consulta->bindParam(':estado',$this->estado, PDO::PARAM_INT);
-       $consulta->bindParam(':idEmpleado', $this->idEmpleado, PDO::PARAM_STR);
-       return $consulta->execute();
-
+           set estado=:estado
+           WHERE codigo=:codigo");
+       $consulta->bindParam(':codigo',$this->codigo, PDO::PARAM_STR);
+       $consulta->bindParam(':estado',$this->estado, PDO::PARAM_STR);
+    //    $consulta->bindParam(':idEmpleado', $this->idEmpleado, PDO::PARAM_STR);
+       $consulta->execute();
+       return $consulta->rowCount();
 
     }
 
@@ -349,7 +372,8 @@ public function TraerIdMesa($codigo,$estado){
        $consulta->bindParam(':id',$this->id, PDO::PARAM_INT);
        $consulta->bindParam(':estado',$this->estado, PDO::PARAM_INT);
        $consulta->bindParam(':idEmpleado', $this->idEmpleado, PDO::PARAM_STR);
-       return $consulta->execute();
+       $consulta->execute();
+       return $consulta->rowCount();
 
 
     }
@@ -390,20 +414,31 @@ public function TraerIdMesa($codigo,$estado){
            WHERE id=:id");
         $consulta->bindParam(':id',$id, PDO::PARAM_INT);
         $consulta->bindParam(':estado',$estado, PDO::PARAM_INT);
-        return $consulta->execute();   
+        $consulta->execute();
+       return $consulta->rowCount();   
 
 
     }
 
 
     ///tiempo restante pedido
-    public function CalcularTiempo($codigoPedido,$codigoMesa){
+    public function CalcularTiempo($codigoPedido,$codigoMesa)
+    {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta =$objetoAccesoDato->RetornarConsulta("SELECT p.id as id ,carta.descripcion as articulo,(sec_to_time(timestampdiff(SECOND,now(), DATE_ADD(p.horaInicio, INTERVAL p.estimado MINUTE) ))) as estimado, p.horaInicio as horaInicio,DATE_ADD(p.horaInicio, INTERVAL p.estimado MINUTE) as horaEntrega FROM pedidos as p, mesas as m,carta WHERE p.mesa=m.id and p.codigo='$codigoPedido' and m.codigo='$codigoMesa' AND carta.id=p.idArticulo ");
+        $consulta =$objetoAccesoDato->RetornarConsulta(
+            "select TIMEDIFF(DATE_ADD( max(p.horaInicio), INTERVAL max(estimado) MINUTE),now()) TiempoRestante 
+            from pedidos p 
+            inner join mesas m on m.id = p.idMesa
+            where p.codigo = :codigoPedido and m.codigo = :codigoMesa");
+        $consulta->bindParam(':codigoPedido',$codigoPedido, PDO::PARAM_STR);    
+        $consulta->bindParam(':codigoMesa',$codigoMesa, PDO::PARAM_STR);    
         $consulta->execute(); 
-        $pedidos= $consulta->fetchAll(PDO::FETCH_CLASS, "pedidos"); 
-    
-        return $pedidos;
+        $ret = $consulta->fetch(PDO::FETCH_OBJ);
+        if($ret)
+            return $ret->TiempoRestante;
+        else
+            return 0;
+
     } 
 
 

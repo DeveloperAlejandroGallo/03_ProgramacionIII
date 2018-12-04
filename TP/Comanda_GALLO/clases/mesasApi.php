@@ -148,7 +148,8 @@ class mesasApi extends mesas
 				{
 					if($mimesa->Modificarestado())
 					{
-						$res = $mimesa;
+						$res->mensaje = "Mesa cambiada a $mimesa->estado";
+						$res->mesa = $mimesa;
 					}
 					else
 						$res->error = "No se modifico el estado de la mesa.";

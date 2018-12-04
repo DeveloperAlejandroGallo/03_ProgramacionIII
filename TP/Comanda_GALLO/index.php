@@ -57,6 +57,7 @@ $app->group('/pedidos', function ()
     $this->post('/del', \pedidosApi::class . ':BorrarUno')->add(\MWparaAutentificar::class . ':VerificarMozos');
     $this->post('/mod', \pedidosApi::class . ':ModificarUno');
     $this->post('/atender', \pedidosApi::class . ':atenderPedido');  
+    $this->post('/facturado', \pedidosApi::class . ':facturadoEntreFechas');
 })->add(\MWparaAutentificar::class . ':VerificarUsuario');
 
 
@@ -73,6 +74,7 @@ $app->group('/caja', function ()
 {
     $this->get('', \cajaApi::class . ':traerTodos');
     $this->post('', \cajaApi::class . ':CargarUno');
+
 
 })->add(\MWparaAutentificar::class . ':VerificarSocios');
 

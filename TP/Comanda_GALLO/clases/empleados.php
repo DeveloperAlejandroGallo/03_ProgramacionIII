@@ -100,7 +100,9 @@ public function GuardarIngreso($datos,$empleado)
 	$ruta= $datos['ruta'];
 
     $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-    $consulta =$objetoAccesoDato->RetornarConsulta("INSERT into login (nombre,idEmpleado,tipo,metodo,ruta)values(:nombre,:idEmpleado,:tipo,:metodo,:ruta)");
+    $consulta =$objetoAccesoDato->RetornarConsulta(
+        "INSERT into login (nombre,idEmpleado,tipo,metodo,ruta)
+        values(:nombre,:idEmpleado,:tipo,:metodo,:ruta)");
     $retorno =  $consulta->execute(array($nombre,$id,$tipo,$metodo,$ruta));   
     //return $retorno;
 
@@ -131,7 +133,6 @@ public function obtenerTodos(){
 }
 
 
-//--Consultar segun turno y tipo
 public function Consultar($tipo){
 
     $retorno;

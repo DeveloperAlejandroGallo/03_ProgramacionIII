@@ -118,106 +118,146 @@ class pedidosApi extends pedidos
 
 
 
-
+    /** Recibo por parametro
+     * idPedido: ya que estamos dentro del sistema, nos manejamos con el id.
+     * token: en el header para identificar el tipo de usuario.
+     */
     public function ModificarUno($request, $response, $args)
     {
-        $arrayConToken = $request->getHeader('token');
-        $token = $arrayConToken[0];
+        $resNro = 500;
+        $token = $request->getHeader('token')[0];
         $payload = AutentificadorJWT::ObtenerPayLoad($token);
 
-        $nuevoUser = new empleados();
-        $nuevoUser = $payload->data;
+        $user = new empleados();
+        $user = $payload->data;
 
-        $objDelaRespuesta = new stdclass();
+        $res = new stdclass();
         $body = json_decode(json_encode($request->getParsedBody()));
 
-        if (isset($body->codigo)) 
+        if (isset($body->idPedido)) 
         {
-            $id = $body->codigo;
-
-            if ($nuevoUser->tipo == "bartender" || $nuevoUser->tipo == "cerveceros" || $nuevoUser->tipo == "cocineros") 
+            
+            if ($user->tipo == "bartender" || $user->tipo == "cerveceros" || $user->tipo == "cocineros") 
             {      
-                if (pedidos::ConsultarTipo($codigo, $nuevoUser->tipo)) 
+                $miPedido = new pedidos();
+                $miPedido->estado = "listo para servir";
+                $miPedido->id = $body->idPedido;
+                // $miPedido->idEmpleado = $user->id;
+                $miPedido->horaFin = date("Y-m-d H:i:s");
+
+                if ($miPedido->PedidoTerminado() == 1) 
                 {
-                    $miPedido = new pedidos();
-                    $miPedido->estado = "listo para servir";
-                    $miPedido->id = $id;
-                    $miPedido->idEmpleado = $nuevoUser->id;
-                    $miPedido->horaFin = date("Y-m-d H:i:s");
-
-                    if ($miPedido->PedidoTerminado()) {
-
-                        $respuesta = "El pedido se modifico correctamente";
-                    } else {
-                        $respuesta = "Error al cambiar el pedido";
-                    }
-
-                } else {
-                    $respuesta = "El pedido no se  puede cambiar";
+                    $res->mensaje = "El pedido se modifico correctamente";
+                    $resNro = 200;
+                } 
+                else 
+                {
+                    $res->error = "Error al cambiar el pedido";
                 }
-   
 
-            } elseif ($nuevoUser->tipo == "mozos") 
+            } 
+            else
+            if ($user->tipo == "mozos") 
             {
 
                 $miPedido = new pedidos();
+                $miPedido = pedidos::TraerId($body->idPedido);
                 $miPedido->estado = "entregado";
-                $miPedido->id = $id;
-                $miPedido->idEmpleado = $nuevoUser->id;
-                if (pedidos::ConsultarEstado($id, "listo para servir")) 
-                {
 
-                    if ($miPedido->PedidoEntregado()) 
+                if (pedidos::ConsultarEstado($miPedido->codigo, "listo para servir")) //Consulto si todos los articulos estan listos.
+                {
+                    if ($miPedido->PedidoEntregado()!=0) 
                     {
-                        $pedido = pedidos::TraerId($id);
-                        mesas::ModificarMesa($pedido->mesa, "con clientes comiendo");
-                        $respuesta = "El pedido se entrego correctamente";
-                    } else {
-                        $respuesta = "Error al cambiar el pedido";
+
+                        if(mesas::ModificarMesa($miPedido->idMesa, "con clientes comiendo") == 1)
+                        {
+                            $res->mensaje = "El pedido $miPedido->codigo se entrego correctamente.";
+                            $resNro = 200;
+                        }
+                        else
+                            $res->error = "No se pudo modificar la mesa.";
+                    } 
+                    else 
+                    {
+                        $res->error = "Error al cambiar el pedido";
                     }
 
                 } else 
                 {
-                    $respuesta = "El pedido no esta listo";
+                    $res->error = "El pedido no esta listo";
                 }
 
             }
 
-            $objDelaRespuesta->resultado = $respuesta;
-
         } else {
-            $objDelaRespuesta->resultado = "Faltan Parametros";
+            $res->error = "Faltan Parametros";
         }
 
-        return $response->withJson($objDelaRespuesta, 200);
+        return $response->withJson($res, $resNro);
 
     }
 
 
     public function TraerTodos($request, $response, $args)
     {
+        $res = new stdClass();
+        $token = $request->getHeader('token')[0];
 
-        $arrayConToken = $request->getHeader('token');
-        $token = $arrayConToken[0];
         $payload = AutentificadorJWT::ObtenerPayLoad($token);
 
         $nuevoUser = new empleados();
         $nuevoUser = $payload->data;
+        $res->usuario = $nuevoUser->nombre;
+        
         if ($nuevoUser->tipo == "socios" || $nuevoUser->tipo == "mozos") 
         {
             $fecha = date("Y-m-d");
-            $pedidos = pedidos::obtenerTodos($fecha);
+            $res->todosLosPedidos = pedidos::obtenerTodos();
         } 
         else 
         {
             $fecha = date("Y-m-d");
-            $pedidos = pedidos::TraerPedidosSector($nuevoUser->tipo, $fecha);
+            $res->sector = $nuevoUser->tipo;
+            $res->pedidosPendientes = pedidos::TraerPedidosSector($nuevoUser->tipo);
         }
 
-        return $response->withJson($pedidos,200);
+        return $response->withJson($res,200);
 
     }
 
+
+    public function facturadoEntreFechas($request, $response, $args)
+    {
+        $res = new stdClass();
+        $resNro = 500;
+        $token = $request->getHeader('token')[0];
+
+        $payload = AutentificadorJWT::ObtenerPayLoad($token);
+        $body = json_decode(json_encode($request->getParsedBody()));
+
+        $nuevoUser = new empleados();
+        $nuevoUser = $payload->data;
+        
+        if ($nuevoUser->tipo == "socios" ) 
+        {
+            if(isset($body->fechaYHoraInicio,$body->fechaYHoraFin))
+            {
+                $res->fechaYHora->desde = $body->fechaYHoraInicio;
+                $res->fechaYHora->hasta = $body->fechaYHoraFin;
+                $facturado = pedidos::obtenerFacturadoEntreFechas($body->fechaYHoraInicio,$body->fechaYHoraFin);
+                $res->total = $facturado->total;
+            } 
+            else 
+            {
+                $res->error = "Faltan parametros";
+            }
+        }
+        else
+            $res->error = "Solo los socios pueden visualizar este reporte.";
+
+        return $response->withJson($res,200);
+
+    }
 
     public function TraerUno($request, $response, $args)
     {
@@ -254,9 +294,9 @@ class pedidosApi extends pedidos
             $respuesta = "Error al cancelar el pedido";
         }
 
-        $objDelaRespuesta = new stdclass();
-        $objDelaRespuesta->resultado = $respuesta;
-        $newResponse = $response->withJson($objDelaRespuesta, 200);
+        $res = new stdclass();
+        $res->resultado = $respuesta;
+        $newResponse = $response->withJson($res, 200);
 
         return $newResponse;
     }
@@ -267,13 +307,12 @@ class pedidosApi extends pedidos
     {
         $body = json_decode(json_encode($request->getParsedBody()));
         $resNro = 500;
+        $res = new stdClass();
         if (isset($body->codigoPedido, $body->codigoMesa)) 
         {
-            $pedidos = new pedidos();
-            $codigoMesa = $body->codigoMesa;
-            $codigoPedido = $body->codigoPedido;
-            $pedidos = pedidos::CalcularTiempo($codigoPedido, $codigoMesa);
-            $respuesta = $pedidos;
+            $minutos = pedidos::CalcularTiempo($body->codigoPedido, $body->codigoMesa);
+
+            $res->mensaje = "Al pedido $body->codigoPedido le faltan " . $minutos . " minutos";
             $resNro = 200;
         } 
         else 
@@ -282,45 +321,48 @@ class pedidosApi extends pedidos
 
         }
         
-        return $response->withJson($respuesta,$resNro);
+        return $response->withJson($res,$resNro);
 
 
     }
 
     public function atenderPedido($request, $response, $args)
     {
-        //recibo la mesa, el codigo y el idArticulo
+        //El pedido es tomado por un tipo de empleado de la lista de pedidos pendientes, el cual ingresa el tiempo.
+        //recibo la mesa, el codigo,  el idArticulo
         $body = json_decode(json_encode($request->getParsedBody()));
         $resNro = 500;
         $token = $request->getHeader('token')[0];
         $payload = AutentificadorJWT::ObtenerPayLoad($token);
-
+        $res = new stdClass();
         $nuevoUser = new empleados();
         $nuevoUser = $payload->data;
 
         $nvoPedido = new pedidos();
          
-        if(isset($body->codigo, $body->mesa, $body->articulo))
+        if(isset($body->codigo, $body->mesa, $body->articulo, $body->tiempo))
         {
-            $nuevoPedido->codigo = $body->codigo;
-            $nuevoPedido->idMesa = mesas::TraerId($body->codigo);
-            $nuevoPedido->idArticulo = $body->idArticulo;
+            $nvoPedido->codigo = $body->codigo;
+            $nvoPedido->idMesa = mesas::TraerId($body->mesa)['id'];
+            $nvoPedido->idArticulo = $body->articulo;
+            $nvoPedido->estimado = $body->tiempo;
+            $nvoPedido->idEmpleado = $nuevoUser->id;
+            $nvoPedido->estado = "en preparacion";
 
-            $miPedido = pedidos::TraerUno();
-
-
+           
+            if($nvoPedido->asignarPedido() > 0)
+            {
+                $res->mensaje = "Pedido $body->codigo asignado a $nuevoUser->nombre";
+                $resNro = 200;
+            }
+            else
+                $res->error = "No se pudo asignar el pedido.";
 
         }
         else
             $res->error = "Faltan informar parametros";
 
-
-        
-
-
-
-
-
+        return $response->withJson($res,$resNro);
 
     }
 
