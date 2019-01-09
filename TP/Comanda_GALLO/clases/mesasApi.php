@@ -16,7 +16,7 @@ class mesasApi extends mesas
 	{
 		$todosLosmesas = mesas::obtenerTodos();
 
-		return $response->withJson($todosLosmesas);
+		return $response->withJson($todosLosmesas,200);
 	}
 
 
